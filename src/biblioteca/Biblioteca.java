@@ -36,10 +36,12 @@ public class Biblioteca {
     }
     public void buscarPorISBN(String isbn) {
         for (Libro libro : libros) {
-            if (libro.getIsbn().equalsIgnoreCase(isbn)) {
-                System.out.println(libro);
+            if (libro.getIsbn().equals(isbn)) {
+                System.out.println("Libro Encontrado"+libro);
+
             }
         }
+        System.out.println("no se encontro  libro con ese ISBN.");
     }
     // Método para listar todos los libros
     public void listarLibros() {

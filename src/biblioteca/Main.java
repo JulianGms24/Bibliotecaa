@@ -1,7 +1,8 @@
 package biblioteca;
-import java.sql.SQLOutput;
-import java.util.Scanner;
 
+import java.util.Scanner;
+import  biblioteca.Libro;
+import biblioteca.Biblioteca;
 public class Main {
     public static void main(String[] args) {
         Biblioteca biblioteca = new Biblioteca();
@@ -17,8 +18,17 @@ public class Main {
             System.out.println("5 Listar todos los libros");
             System.out.println("6 Salir");
             System.out.print("Elige una opción: ");
-            opcion = scanner.nextInt();
-            scanner.nextLine(); // Consumir la nueva línea
+            try {
+                opcion = Integer.parseInt(scanner.nextLine());
+
+                if (opcion < 1 || opcion > 6) {
+                    System.out.println("Opción no válida. Intenta de nuevo.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida. Por favor, ingresa un número del 1 al 6.");
+                opcion = -1; // Asignar un valor inválido para que el bucle continúe
+            }
+
 
             switch (opcion) {
                 case 1:
@@ -43,7 +53,8 @@ public class Main {
                 case 4:
                     System.out.println("Introduce el ISBN: ");
                     String buscarISBN = scanner.nextLine();
-                    biblioteca.buscarPorISBN =(buscarISBN);
+                    biblioteca.buscarPorISBN(buscarISBN);
+
 
                 case 5:
                     biblioteca.listarLibros();
@@ -54,7 +65,7 @@ public class Main {
                 default:
                     System.out.println("⚠️ Opción no válida. Intenta de nuevo.");
             }
-        } while (opcion != 5);
+        } while (opcion != 6);
 
         scanner.close();
     }
