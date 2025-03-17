@@ -34,7 +34,13 @@ public class Biblioteca {
             }
         }
     }
-
+    public void buscarPorISBN(String isbn) {
+        for (Libro libro : libros) {
+            if (libro.getIsbn().equalsIgnoreCase(isbn)) {
+                System.out.println(libro);
+            }
+        }
+    }
     // Método para listar todos los libros
     public void listarLibros() {
         if (libros.isEmpty()) {
